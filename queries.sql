@@ -3,6 +3,9 @@ CREATE TYPE
   user_role AS ENUM('Admin', 'Customer');
 
 -- Create vehicle type
+CREATE TYPE vehicle_type AS ENUM ('car', 'bike', 'truck');
+
+-- Create vehicle status type
 CREATE TYPE
   vehicle_status AS ENUM('available', 'rented', 'maintenance');
 
@@ -38,17 +41,15 @@ VALUES
   );
 
 -- Create Vehicles Table
-CREATE TABLE
-  vehicles (
-    vehicle_id INT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    type
-      VARCHAR(50) NOT NULL,
-      model INT NOT NULL,
-      registration_number VARCHAR(50) NOT NULL UNIQUE,
-      rental_price DECIMAL(10, 2) NOT NULL,
-      status vehicle_status NOT NULL
-  );
+CREATE TABLE vehicles (
+  vehicle_id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  type vehicle_type NOT NULL,
+  model INT NOT NULL,
+  registration_number VARCHAR(50) NOT NULL UNIQUE,
+  rental_price DECIMAL(10, 2) NOT NULL,
+  status vehicle_status NOT NULL
+);
 
 -- Insert data into Vehicles Table
 INSERT INTO
