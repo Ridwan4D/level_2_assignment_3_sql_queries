@@ -1,4 +1,4 @@
- -- Create user type
+-- Create user type
 CREATE TYPE
   user_role AS ENUM('Admin', 'Customer');
 
